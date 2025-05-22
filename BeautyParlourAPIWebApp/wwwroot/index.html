@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty Parlour Portfolio</title>
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow-sm mb-4">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Beauty Parlour Logo" style="height: 40px;">
+            </a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link fst-italic" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fst-italic" href="add.html">Add</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="search-bar position-relative">
+                    <input id="search-input" type="text" class="form-control fst-italic" placeholder="Search by hashtag...">
+                    <ul id="hashtag-suggestions" class="list-group position-absolute w-100 d-none"></ul>
+                </div>
+            </div>
+        </div>
+        <div id="boards-container" class="row g-4">
+            <!-- Boards will be dynamically inserted here -->
+        </div>
+        <template id="board-template">
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header d-flex align-items-center" style="background: var(--theme-color, #fff);">
+                        <h5 class="card-title mb-0 board-name"></h5>
+                    </div>
+                    <div class="card-body">
+                        <img class="board-title-image mb-3" src="" alt="Board Title" style="object-fit: cover; border-radius: 8px; display: none;">
+                        <button class="btn btn-outline-danger btn-sm see-more-btn w-100" style="display: none;">See more</button>
+                        <div class="board-items-container" style="display: none;">
+                            <!-- Portfolio items will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template id="portfolio-item-template">
+            <div class="portfolio-item mb-3 p-2 rounded" style="background: var(--item-bg, #f8f9fa);">
+                <div class="d-flex align-items-center">
+                    <img class="before-photo me-2" src="" alt="Before" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px; display: none;">
+                    <img class="after-photo me-2" src="" alt="After" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px; display: none;">
+                    <div class="flex-grow-1">
+                        <span class="hashtags text-muted small"></span>
+                        <span class="price badge bg-danger ms-2"></span>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+    <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

@@ -3,35 +3,45 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddRazorPages();
+// ??????? DbContext ? ?????? ???????????
 builder.Services.AddDbContext<BeautyParlourAPIContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")
     ));
-builder.Services.AddControllersWithViews();
+
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+});
+
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// ????????? scope ? ????????? EnsureCreated ????? ????????
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<BeautyParlourAPIContext>();
+    context.Database.EnsureCreated();
+}
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
+app.UseDefaultFiles();    // ??? index.html
 app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapRazorPages();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
+    // endpoints.MapRazorPages(); // ???? ? Razor Pages - ??????????????
 });
 
 app.Run();

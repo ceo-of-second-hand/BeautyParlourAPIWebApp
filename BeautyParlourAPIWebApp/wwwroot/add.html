@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Board or Portfolio Item</title>
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow-sm mb-4">
+        <div class="container-fluid">
+            <a class="navbar-brand fst-italic" href="index.html">Beauty Parlour</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link fst-italic" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fst-italic" href="add.html">Add</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h3 class="fst-italic text-danger">Add Board</h3>
+                <form id="add-board-form">
+                    <div class="mb-3">
+                        <label for="board-name" class="form-label fst-italic">Board Name</label>
+                        <input type="text" class="form-control fst-italic" id="board-name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="board-theme-color" class="form-label fst-italic">Board Theme Color</label>
+                        <input type="color" class="form-control form-control-color fst-italic" id="board-theme-color" value="#ff69b4" title="Choose your color">
+                    </div>
+                    <button type="submit" class="btn btn-danger fst-italic">Add Board</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h3 class="fst-italic text-danger">Add Portfolio Item</h3>
+                <form id="add-item-form">
+                    <div class="mb-3">
+                        <label for="item-board" class="form-label fst-italic">Board</label>
+                        <select class="form-select fst-italic" id="item-board" required></select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="item-before-photo" class="form-label fst-italic">Before Photo</label>
+                        <input type="file" class="form-control fst-italic" id="item-before-photo" accept=".jpg,.jpeg,.png,.webp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="item-after-photo" class="form-label fst-italic">After Photo (Result)</label>
+                        <input type="file" class="form-control fst-italic" id="item-after-photo" accept=".jpg,.jpeg,.png,.webp" required>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="item-title-image">
+                        <label class="form-check-label fst-italic" for="item-title-image">
+                            Use this result photo as the board's title image
+                        </label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="item-hashtags" class="form-label fst-italic">Hashtags (comma-separated)</label>
+                        <input type="text" class="form-control fst-italic" id="item-hashtags" placeholder="#nails, #red, #art" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="item-price" class="form-label fst-italic">Price</label>
+                        <input type="number" class="form-control fst-italic" id="item-price" min="0" step="0.01" required>
+                    </div>
+                    <button type="submit" class="btn btn-danger fst-italic">Add Item</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/add.js"></script>
+</body>
+</html> 
